@@ -2,11 +2,15 @@
 
 ## Descrição da atividade
 
-Tarefa e-Commerce: esta tarefa trata sobre a configuração de uma Loja Virtual (seguindo as etapas que estão na playlist a partir do vídeo 5 - Configuração Inicial do Wordpress). Os requisitos mínimos que devem conter na configuração do site estão abaixo:
-No mínimo 5 produtos cadastrados
-No mínimo 1 forma de pagamento cadastrado (Ex.: PagSeguro, Mercado Pago)
-No mínimo 2 clientes cadastrados
-Efetuar uma compra para cada cliente
+Tarefa e-Commerce: esta tarefa trata sobre a configuração de uma Loja Virtual (seguindo as etapas que estão na playlist a partir do vídeo 5 - Configuração Inicial do Wordpress). 
+
+Os requisitos mínimos que devem conter na configuração do site estão abaixo:
+
+- No mínimo 5 produtos cadastrados
+- No mínimo 1 forma de pagamento cadastrado (Ex.: PagSeguro, Mercado Pago)
+- No mínimo 2 clientes cadastrados
+- Efetuar uma compra para cada cliente
+
 Depois das configurações realizadas, faça um PITCH (apresentação rápida e objetiva através de um vídeo) mostrando as configurações feitas, as vendas realizadas, controle de estoque e os tipos de pagamentos disponíveis no site. O vídeo pode ser a captura da sua tela mostrando o site.
        
 O serviço do Cloud Beaver, disponibilizado por padão na porta 8978 do container, foi mapeado para o servidor local na porta 8080.
