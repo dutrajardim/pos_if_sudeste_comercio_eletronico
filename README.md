@@ -12,8 +12,6 @@ Os requisitos mínimos que devem conter na configuração do site estão abaixo:
 - Efetuar uma compra para cada cliente
 
 Depois das configurações realizadas, faça um PITCH (apresentação rápida e objetiva através de um vídeo) mostrando as configurações feitas, as vendas realizadas, controle de estoque e os tipos de pagamentos disponíveis no site. O vídeo pode ser a captura da sua tela mostrando o site.
-       
-O serviço do Cloud Beaver, disponibilizado por padão na porta 8978 do container, foi mapeado para o servidor local na porta 8080.
 
 ## Resolução
 
