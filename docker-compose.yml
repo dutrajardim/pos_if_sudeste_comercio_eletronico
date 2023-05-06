@@ -1,0 +1,69 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: lojavirtual-db
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=lojavirtual
+    volumes:
+      - dbdata:/var/lib/mysql
+    command: "--default-authentication-plugin=mysql_native_password"
+    networks:
+      - lojavirtual-network
+
+  wordpress:
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lojavirtual-wp
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - WORDPRESS_DB_HOST=lojavirtual-db:3306
+      - WORDPRESS_DB_USER=$MYSQL_USER
+      - WORDPRESS_DB_PASSWORD=$MYSQL_PASSWORD
+      - WORDPRESS_DB_NAME=lojavirtual
+    volumes:
+      - wordpress:/var/www/html
+    networks:
+      - lojavirtual-network
+
+  webserver:
+    depends_on:
+      - wordpress
+    image: nginx:1.15.12-alpine
+    container_name: webserver
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - wordpress:/var/www/html
+      - ./nginx-conf:/etc/nginx/conf.d
+      - ./certs/lojavirtual.local.pem:/etc/nginx/lojavirtual.local.pem
+      - ./certs/lojavirtual.local-key.pem:/etc/nginx/lojavirtual.local-key.pem
+    networks:
+      - lojavirtual-network
+
+volumes:
+  wordpress:
+    driver_opts:
+      type: none
+      device: /home/rafael/data/lojavirtual/wordpress
+      o: bind
+  dbdata:
+    driver_opts:
+      type: none
+      device: /home/rafael/data/lojavirtual/dbdata
+      o: bind
+
+networks:
+  lojavirtual-network:
+    driver: bridge
